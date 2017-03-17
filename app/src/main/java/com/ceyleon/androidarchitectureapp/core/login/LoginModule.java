@@ -20,7 +20,8 @@ public class LoginModule {
 
     @Provides
     @PerActivityScope
-    public LoginContract.View provideView(){
+    public LoginContract.View provideView() {
         return view;
     }
+
 }

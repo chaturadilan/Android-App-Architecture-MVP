@@ -12,10 +12,10 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class Utils {
 
-    public static class ActivityUtils{
+    public static class ActivityUtils {
 
-        public static void addFragmentToActivity (@NonNull FragmentManager fragmentManager,
-                                                  @NonNull Fragment fragment, int frameId) {
+        public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager,
+                                                 @NonNull Fragment fragment, int frameId) {
             checkNotNull(fragmentManager);
             checkNotNull(fragment);
             FragmentTransaction transaction = fragmentManager.beginTransaction();

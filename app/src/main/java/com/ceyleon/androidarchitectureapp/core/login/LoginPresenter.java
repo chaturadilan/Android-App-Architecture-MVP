@@ -19,7 +19,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     BaseSchedulerProvider schedulerProvider;
 
     @Inject
-    public LoginPresenter(LoginContract.View view, Retrofit retrofit, BaseSchedulerProvider schedulerProvider){
+    public LoginPresenter(LoginContract.View view, Retrofit retrofit, BaseSchedulerProvider schedulerProvider) {
         this.view = view;
         this.schedulerProvider = schedulerProvider;
         this.retrofit = retrofit;
@@ -53,4 +53,5 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void start() {
 
     }
+
 }

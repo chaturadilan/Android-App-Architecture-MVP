@@ -13,10 +13,12 @@ public interface LoginContract {
     public interface View extends BaseView<Presenter> {
 
         public void onLoginSuccess(User user);
+
         public void onLoginFailure(Throwable t);
     }
 
     public interface Presenter extends BasePresenter {
         public void login(String username, String password);
     }
+
 }

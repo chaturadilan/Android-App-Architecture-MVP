@@ -23,7 +23,7 @@ public class App extends Application {
         Timber.plant(new Timber.DebugTree());
 
         netComponent = DaggerNetComponent.builder()
-             .appModule(new AppModule(this))
+                .appModule(new AppModule(this))
                 .netModule(new NetModule("https://private-d1e873-colorsapi.apiary-mock.com/"))
                 .build();
 

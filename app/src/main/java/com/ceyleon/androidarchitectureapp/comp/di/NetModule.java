@@ -32,7 +32,6 @@ public class NetModule {
         this.mBaseUrl = mBaseUrl;
     }
 
-
     @Provides
     @Singleton
     Cache provideHttpCache(Application application) {
@@ -76,4 +75,5 @@ public class NetModule {
     BaseSchedulerProvider provideSchedulerProvider(){
         return SchedulerProvider.getInstance();
     }
+
 }

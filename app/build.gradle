@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.ceyleon.androidarchitectureapp"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    //Support Libraries
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
+
+    //Dagger2
+    compile 'com.google.dagger:dagger:2.9'
+    apt 'com.google.dagger:dagger-compiler:2.9'
+
+    //ButterKnife
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    apt 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    //Timber
+    compile 'com.jakewharton.timber:timber:4.5.1'
+
+    //Rx JAVA
+    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    compile 'io.reactivex:rxandroid:1.2.1'
+
+    //Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'com.squareup.retrofit2:retrofit-mock:2.2.0'
+
+    //Guava
+    compile 'com.google.guava:guava:20.0'
+
+    //Testing
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+
+    compile 'com.github.mirrajabi:okhttp-json-mock:1.0'
+
+
+
+
+
+
+
+
+}

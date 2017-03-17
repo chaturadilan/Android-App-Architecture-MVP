@@ -18,4 +18,5 @@ public interface NetComponent {
     Retrofit retrofit();
 
     BaseSchedulerProvider schedulerProvider();
+
 }

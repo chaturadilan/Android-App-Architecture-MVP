@@ -14,4 +14,5 @@ import retrofit2.Retrofit;
 public interface MockNetComponent {
 
     Retrofit retrofit();
+
 }
