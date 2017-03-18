@@ -1,6 +1,5 @@
 package com.ceyleon.androidarchitectureapp.core.login;
 
-import com.ceyleon.androidarchitectureapp.api.LoginAPI;
 import com.ceyleon.androidarchitectureapp.comp.schedulers.ImmediateSchedulerProvider;
 import com.ceyleon.androidarchitectureapp.comp.test.DaggerMockNetComponent;
 import com.ceyleon.androidarchitectureapp.comp.test.MockNetModule;
@@ -14,8 +13,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import retrofit2.Retrofit;
-import retrofit2.mock.BehaviorDelegate;
-import retrofit2.mock.MockRetrofit;
 import retrofit2.mock.NetworkBehavior;
 
 import static org.mockito.Matchers.any;
@@ -44,19 +41,15 @@ public class LoginPresenterUnitTest {
 
         retrofit = DaggerMockNetComponent.builder().mockNetModule(new MockNetModule()).build().retrofit();
 
-        MockRetrofit mockRetrofit = new MockRetrofit.Builder(retrofit)
-                .networkBehavior(behavior).build();
-
-        BehaviorDelegate<LoginAPI> delegate = mockRetrofit.create(LoginAPI.class);
-
-        mockService = new MockService(delegate);
-
-        colorPresenter = new LoginPresenter(view, mockRetrofit.retrofit(), new ImmediateSchedulerProvider());
+        colorPresenter = new LoginPresenter(view, retrofit, new ImmediateSchedulerProvider());
     }
 
     @Test
     public void login() throws Exception {
         colorPresenter.login("dilan", "dilan123");
+        verify(view).onLoginSuccess(any(User.class));
+
+        colorPresenter.login("dilan", "dilan");
         verify(view).onLoginSuccess(any(User.class));
     }
 

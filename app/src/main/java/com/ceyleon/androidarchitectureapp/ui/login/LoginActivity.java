@@ -25,7 +25,7 @@ public class LoginActivity extends BaseActivity {
         LoginFragment loginFragment = (LoginFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
         if(loginFragment == null){
             loginFragment = LoginFragment.newInstance();
-            Utils.ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), loginFragment, R.id.contentFrame);
+            Utils.ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), loginFragment, R.id.contentFrame);
         }
 
         DaggerLoginComponent.builder()

@@ -22,7 +22,7 @@ public class MockNetModule {
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl("https://private-d1e873-colorsapi.apiary-mock.com/")
+                .baseUrl("http://localhost:8080/")
                 .client(new OkHttpClient())
                 .build();
     }

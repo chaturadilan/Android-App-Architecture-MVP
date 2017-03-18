@@ -4,11 +4,19 @@
 package com.ceyleon.androidarchitectureapp.core.login;
 
 import com.ceyleon.androidarchitectureapp.api.LoginAPI;
+import com.ceyleon.androidarchitectureapp.app.Utils;
 import com.ceyleon.androidarchitectureapp.comp.schedulers.BaseSchedulerProvider;
+import com.ceyleon.androidarchitectureapp.models.ErrorResponse;
 import com.ceyleon.androidarchitectureapp.models.LoginResponse;
+
+import java.io.IOException;
+import java.lang.annotation.Annotation;
 
 import javax.inject.Inject;
 
+import okhttp3.ResponseBody;
+import retrofit2.Converter;
+import retrofit2.HttpException;
 import retrofit2.Retrofit;
 import rx.Observer;
 
@@ -39,7 +47,15 @@ public class LoginPresenter implements LoginContract.Presenter {
 
                     @Override
                     public void onError(Throwable t) {
-                        view.onLoginFailure(t);
+                        if (t instanceof HttpException) {
+                            Converter<ResponseBody, ErrorResponse> errorConverter = retrofit.responseBodyConverter(ErrorResponse.class, new Annotation[0]);
+                            try {
+                                ErrorResponse errorResponse = errorConverter.convert(((HttpException) t).response().errorBody());
+                                view.onLoginFailure(errorResponse.getError());
+                            } catch (IOException e) {
+                                view.onLoginFailure(Utils.ErrorUtil.returnUnknownError());
+                            }
+                        }
                     }
 
                     @Override

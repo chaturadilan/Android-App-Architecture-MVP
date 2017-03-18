@@ -2,6 +2,7 @@ package com.ceyleon.androidarchitectureapp.core.login;
 
 import com.ceyleon.androidarchitectureapp.comp.base.BasePresenter;
 import com.ceyleon.androidarchitectureapp.comp.base.BaseView;
+import com.ceyleon.androidarchitectureapp.models.Error;
 import com.ceyleon.androidarchitectureapp.models.User;
 
 /**
@@ -14,7 +15,7 @@ public interface LoginContract {
 
         public void onLoginSuccess(User user);
 
-        public void onLoginFailure(Throwable t);
+        public void onLoginFailure(Error error);
     }
 
     public interface Presenter extends BasePresenter {

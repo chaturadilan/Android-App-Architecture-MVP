@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.ceyleon.androidarchitectureapp.R;
 import com.ceyleon.androidarchitectureapp.core.login.LoginContract;
+import com.ceyleon.androidarchitectureapp.models.Error;
 import com.ceyleon.androidarchitectureapp.models.User;
 
 import butterknife.BindView;
@@ -64,7 +65,7 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     }
 
     @Override
-    public void onLoginFailure(Throwable t) {
+    public void onLoginFailure(Error error) {
         Toast.makeText(getActivity(), "Login Failure", Toast.LENGTH_SHORT).show();
 
     }
